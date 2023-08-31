@@ -8,7 +8,7 @@ export default function Topbar() {
   const PF = "http://localhost:5000/images/"
 
   const handleLogout = () => {
-    if (window.confirm("Are you sure you want to delete your account?")) {
+    if (window.confirm("Are you sure you want to Logout your account?")) {
       dispatch({ type: "LOGOUT" });
     }
   };

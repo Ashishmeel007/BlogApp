@@ -32,13 +32,27 @@ export default function Write() {
         alert(err)
       }
     }
+
     try {
       const res = await axios.post("http://localhost:5000/api/posts", newPost);
       window.location.replace("/post/" + res.data._id);
     } catch (err) {
       alert(err)
     }
-  };
+
+    try {
+    const existingCategories = await axios.get("http://localhost:5000/api/categories");
+    const categoryExists = existingCategories.data.some(c => c.name === category)
+    if (!categoryExists) {
+      const res = await axios.post("http://localhost:5000/api/categories", { name: category });
+      console.log("Category added:", res.data);
+    } else {
+      console.log("Category already exists");
+    }
+  } catch (err) {
+    alert(err);
+  }
+};
   return (
     <div className="write">
       {file && (

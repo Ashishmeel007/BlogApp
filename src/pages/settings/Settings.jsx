@@ -51,7 +51,7 @@ export default function Settings() {
           data: { userId: user._id },
         });
         dispatch({ type: "LOGOUT" });
-        window.location.replace("/register"); 
+        window.location.replace("/"); 
       } catch (err) {
         console.error("Error deleting account:", err);
       }
